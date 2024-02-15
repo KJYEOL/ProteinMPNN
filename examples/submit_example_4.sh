@@ -7,9 +7,9 @@
 
 source activate mlfold
 
-folder_with_pdbs="../inputs/PDB_complexes/pdbs/"
+folder_with_pdbs="../pdb/7kdp.pdb/"
 
-output_dir="../outputs/example_4_outputs"
+output_dir="../pdb/sol"
 if [ ! -d $output_dir ]
 then
     mkdir -p $output_dir
@@ -19,9 +19,9 @@ fi
 path_for_parsed_chains=$output_dir"/parsed_pdbs.jsonl"
 path_for_assigned_chains=$output_dir"/assigned_pdbs.jsonl"
 path_for_fixed_positions=$output_dir"/fixed_pdbs.jsonl"
-chains_to_design="A C"
+chains_to_design="A"
 #The first amino acid in the chain corresponds to 1 and not PDB residues index for now.
-fixed_positions="1 2 3 4 5 6 7 8 23 25, 10 11 12 13 14 15 16 17 18 19 20 40" #fixing/not designing residues 1 2 3...25 in chain A and residues 10 11 12...40 in chain C
+fixed_positions="100-120" #fixing/not designing residues 1 2 3...25 in chain A and residues 10 11 12...40 in chain C
 
 python ../helper_scripts/parse_multiple_chains.py --input_path=$folder_with_pdbs --output_path=$path_for_parsed_chains
 
